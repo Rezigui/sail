@@ -39,6 +39,7 @@ class InstallCommand extends Command
         'minio',
         'mailhog',
         'selenium',
+        'sqs'
     ];
 
     /**
@@ -159,6 +160,25 @@ class InstallCommand extends Command
         if (in_array('meilisearch', $services)) {
             $environment .= "\nSCOUT_DRIVER=meilisearch";
             $environment .= "\nMEILISEARCH_HOST=http://meilisearch:7700\n";
+        }
+
+        if (in_array('sqs', $services)) {
+            $environment .= "\nQUEUE_DRIVER=sqs";
+            $environment = str_replace('QUEUE_CONNECTION=sync', "QUEUE_CONNECTION=sqs", $environment);
+            if(str_contains($environment, 'SQS_')) {
+                $environment = preg_replace('/AWS_ACCESS_KEY_ID=(.*)/', 'AWS_ACCESS_KEY_ID=SAIL_KEY_ID', $environment);
+                $environment = preg_replace('/AWS_SECRET_ACCESS_KEY=(.*)/', 'AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY', $environment);
+                $environment = preg_replace('/SQS_PREFIX=(.*)/', 'SQS_PREFIX=http://sqs:9324', $environment);
+                $environment = preg_replace('/SQS_QUEUE=(.*)/', 'SQS_QUEUE=default', $environment);
+                $environment = preg_replace('/AWS_DEFAULT_REGION=(.*)/', 'AWS_DEFAULT_REGION=eu-west-1', $environment);
+            } else {
+                $environment .= "\nAWS_ACCESS_KEY_ID=SAIL_KEY_ID";
+                $environment .= "\nAWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY";
+                $environment .= "\nSQS_PREFIX=http://sqs:9324";
+                $environment .= "\nSQS_QUEUE=default";
+                $environment .= "\nAWS_DEFAULT_REGION=eu-west-1";
+            }
+
         }
 
         file_put_contents($this->laravel->basePath('.env'), $environment);
