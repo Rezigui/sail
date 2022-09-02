@@ -163,7 +163,6 @@ class InstallCommand extends Command
         }
 
         if (in_array('sqs', $services)) {
-            $environment .= "\nQUEUE_DRIVER=sqs";
             $environment = str_replace('QUEUE_CONNECTION=sync', "QUEUE_CONNECTION=sqs", $environment);
             if(str_contains($environment, 'SQS_')) {
                 $environment = preg_replace('/AWS_ACCESS_KEY_ID=(.*)/', 'AWS_ACCESS_KEY_ID=SAIL_KEY_ID', $environment);
