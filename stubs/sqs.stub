@@ -1,0 +1,9 @@
+    redis:
+        image: 'softwaremill/elasticmq-native'
+        ports:
+            - '${FORWARD_SQS_PORT:-9325}:9325'
+            - '${FORWARD_SQS_PORT:-9325}:9325'
+        volumes:
+            - './vendor/laravel/sail/configurations/sqs.conf:/opt/elasticmq.conf'
+        networks:
+            - sail
