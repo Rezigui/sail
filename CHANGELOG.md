@@ -1,6 +1,42 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/sail/compare/v1.15.4...1.x)
+## [Unreleased](https://github.com/laravel/sail/compare/v1.16.5...1.x)
+
+## [v1.16.5](https://github.com/laravel/sail/compare/v1.16.4...v1.16.5) - 2022-12-14
+
+### Changed
+
+- Add Forward Memcached Port by @dammy001 in https://github.com/laravel/sail/pull/512
+
+## [v1.16.4](https://github.com/laravel/sail/compare/v1.16.3...v1.16.4) - 2022-12-12
+
+### Fixed
+
+- Changing ubuntu keyserver to use curl by @jseitel in https://github.com/laravel/sail/pull/508
+
+## [v1.16.3](https://github.com/laravel/sail/compare/v1.16.2...v1.16.3) - 2022-11-21
+
+### Fixed
+
+- Fix usage of none for services list by @jf-prevost in https://github.com/laravel/sail/pull/495
+
+## [v1.16.2](https://github.com/laravel/sail/compare/v1.16.1...v1.16.2) - 2022-09-28
+
+### Fixed
+
+- Add extra hosts to Selenium by @nomnoms12 in https://github.com/laravel/sail/pull/485
+
+## [v1.16.1](https://github.com/laravel/sail/compare/v1.16.0...v1.16.1) - 2022-09-26
+
+### Fixed
+
+- Script not loading all app env files by @LouisHaftmann in https://github.com/laravel/sail/pull/482
+
+## [v1.16.0](https://github.com/laravel/sail/compare/v1.15.4...v1.16.0) - 2022-08-31
+
+### Added
+
+- PHP 8.2 Support by @Jubeki in https://github.com/laravel/sail/pull/473
 
 ## [v1.15.4](https://github.com/laravel/sail/compare/v1.15.3...v1.15.4) - 2022-08-17
 
